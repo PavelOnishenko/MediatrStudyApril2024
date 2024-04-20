@@ -1,5 +1,7 @@
 ﻿using Dapper;
+using MediatR;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 
 internal class Program
@@ -8,20 +10,56 @@ internal class Program
     // this program emulates system which stores data about energy efficiency measures applied to
     // power transmission lines and their operating modes and allows for assessment of impact of those measures
 
-    record station(int id, string name, float energy_loss);
-    record line(int station_id_1, int station_id_2);
-
-    private static void Main()
+#pragma warning disable CA1859 // Use concrete types when possible for improved performance
+    private static IServiceProvider ConfigureServices()
+#pragma warning restore CA1859 // Use concrete types when possible for improved performance
     {
+        IServiceCollection services = new ServiceCollection();
+
+        services.AddMediatR(cfg =>
+             cfg.RegisterServicesFromAssembly(typeof(station).Assembly));
+        return services.BuildServiceProvider();
+    }
+
+    public record SeedDbWithTestDataCommand(string ConnectionString) : IRequest<(IEnumerable<station> stations, IEnumerable<line> lines)>;
+    public record ApplyEfficiencyMeasuresCommand(string ConnectionString, int StationId, float NewEnergyLoss) : IRequest;
+    public record GetAverageLossQuery(string ConnectionString) : IRequest<float>;
+
+    public class SeedDbWithTestDataHandler : IRequestHandler<SeedDbWithTestDataCommand, (IEnumerable<station> stations, IEnumerable<line> lines)>
+    {`
+        public Task<(IEnumerable<station> stations, IEnumerable<line> lines)> Handle(SeedDbWithTestDataCommand request, CancellationToken cancellationToken) =>
+            Task.Run(() => SeedDbWithTestData(request.ConnectionString));
+    }
+
+    public class ApplyEfficiencyMeasuresHandler : IRequestHandler<ApplyEfficiencyMeasuresCommand>
+    {
+        public Task Handle(ApplyEfficiencyMeasuresCommand request, CancellationToken cancellationToken) =>
+            Task.Run(() => ApplyEfficiencyMeasures(request.ConnectionString, request.StationId, request.NewEnergyLoss), cancellationToken);
+    }
+
+    public class GetAverageLossHandler : IRequestHandler<GetAverageLossQuery, float>
+    {
+        public Task<float> Handle(GetAverageLossQuery request, CancellationToken cancellationToken) =>
+            Task.Run(() => GetAverageLoss(request.ConnectionString));
+    }
+
+    public record station(int id, string name, float energy_loss);
+    public record line(int station_id_1, int station_id_2);
+
+    static async Task Main()
+    {
+        var mediator = ConfigureServices().GetRequiredService<IMediator>();
         var connectionString = LoadConnectionString();
-        if (connectionString is null) return; 
-        var (stations, lines) = SeedDbWithTestData(connectionString);
-        var averageLossBeforeMeasures = GetAverageLoss(connectionString);
+        if (connectionString is null) return;
+
+        var (stations, lines) = await mediator.Send(new SeedDbWithTestDataCommand(connectionString));
+        var averageLossBeforeMeasures = await mediator.Send(new GetAverageLossQuery(connectionString));
         var stationToApplyMeasures = stations.Single(x => x.name == "Station A");
-        ApplyEfficiencyMeasures(connectionString, stationToApplyMeasures.id, stationToApplyMeasures.energy_loss - 0.5);
-        var averageLossAfterMeasures = GetAverageLoss(connectionString);
+        await mediator.Send(new ApplyEfficiencyMeasuresCommand(connectionString, stationToApplyMeasures.id, stationToApplyMeasures.energy_loss - 0.5f));
+        var averageLossAfterMeasures = await mediator.Send(new GetAverageLossQuery(connectionString));
+
         Console.WriteLine($"Average efficiency before was [{averageLossBeforeMeasures}], after became [{averageLossAfterMeasures}].");
-        Console.WriteLine($"Diff is [{averageLossAfterMeasures - averageLossBeforeMeasures}]]");
+        Console.WriteLine($"Diff is [{averageLossAfterMeasures - averageLossBeforeMeasures}]");
     }
 
     private static string? LoadConnectionString() => 
