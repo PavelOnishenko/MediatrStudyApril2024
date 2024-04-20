@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE1006: Стили именования
+dotnet_diagnostic.IDE1006.severity = none
+
+# CS8981: Имя типа содержит только строчные символы ASCII. Такие имена могут резервироваться для языка.
+dotnet_diagnostic.CS8981.severity = none
