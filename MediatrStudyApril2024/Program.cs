@@ -17,7 +17,6 @@ internal partial class Program
 #pragma warning restore CA1859 // Use concrete types when possible for improved performance
     {
         IServiceCollection services = new ServiceCollection();
-
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(station).Assembly));
         services.AddTransient<IDb, LiveDb>(provider => new LiveDb(GetConnectionString()));
         return services.BuildServiceProvider();
@@ -26,8 +25,6 @@ internal partial class Program
     static async Task Main()
     {
         var mediator = ConfigureServices().GetRequiredService<IMediator>();
-        var connectionString = GetConnectionString();
-        if (connectionString is null) return;
         var (stations, _) = await mediator.Send(new SeedDbWithTestDataCommand());
         var averageLossBeforeMeasures = await mediator.Send(new GetAverageLossQuery());
         var stationToApplyMeasures = stations.First();
@@ -38,13 +35,9 @@ internal partial class Program
         Console.WriteLine($"Diff is [{averageLossAfterMeasures - averageLossBeforeMeasures}]");
     }
 
-    private static string? GetConnectionString() =>
-        GetConfiguration().GetConnectionString("PostgreSQLConnection");
+    private static string GetConnectionString() =>
+        GetConfiguration().GetConnectionString("PostgreSQLConnection")!;
 
-    private static IConfigurationRoot GetConfiguration()
-    {
-        return new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .Build();
-    }
+    private static IConfigurationRoot GetConfiguration() => 
+        new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
 }

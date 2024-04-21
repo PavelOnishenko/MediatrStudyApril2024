@@ -65,6 +65,7 @@ namespace Library_MediatrStudyApril2024
         {
             connection.Close();
             connection.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

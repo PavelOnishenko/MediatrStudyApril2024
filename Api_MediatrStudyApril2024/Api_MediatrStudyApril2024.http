@@ -1,0 +1,6 @@
+@Api_MediatrStudyApril2024_HostAddress = http://localhost:5099
+
+GET {{Api_MediatrStudyApril2024_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
