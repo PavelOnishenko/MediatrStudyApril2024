@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library_MediatrStudyApril2024", "Library_MediatrStudyApril2024\Library_MediatrStudyApril2024.csproj", "{AC273834-41AC-4668-A8A2-7145A585EFA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests_MediatrStudyApril2024", "Tests_MediatrStudyApril2024\Tests_MediatrStudyApril2024.csproj", "{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{AC273834-41AC-4668-A8A2-7145A585EFA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC273834-41AC-4668-A8A2-7145A585EFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC273834-41AC-4668-A8A2-7145A585EFA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

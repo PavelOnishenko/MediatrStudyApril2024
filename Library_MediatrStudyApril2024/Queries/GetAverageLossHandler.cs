@@ -1,19 +1,15 @@
 ﻿using MediatR;
-using Npgsql;
-using Dapper;
 
 namespace Library_MediatrStudyApril2024.Queries;
 
 public class GetAverageLossHandler : IRequestHandler<GetAverageLossQuery, float>
 {
-    public Task<float> Handle(GetAverageLossQuery request, CancellationToken cancellationToken) =>
-        Task.Run(() => GetAverageLoss(request.ConnectionString));
+    private readonly IDb db;
 
-    private static float GetAverageLoss(string connectionString)
+    public GetAverageLossHandler(IDb db)
     {
-        using var dbConnection = new NpgsqlConnection(connectionString);
-        dbConnection.Open();
-        var stations = dbConnection.Query<station>("SELECT * FROM station;").ToArray();
-        return stations.Average(x => x.energy_loss);
+        this.db = db;
     }
+
+    public Task<float> Handle(GetAverageLossQuery request, CancellationToken cancellationToken) => Task.Run(db.GetAverageLoss);
 }

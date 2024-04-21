@@ -1,20 +1,22 @@
 ﻿using MediatR;
-using Npgsql;
-using Dapper;
 
 namespace Library_MediatrStudyApril2024.Commands;
 
-public class ApplyEfficiencyMeasuresHandler : IRequestHandler<ApplyEfficiencyMeasuresCommand>
+internal class ApplyEfficiencyMeasuresHandler : IRequestHandler<ApplyEfficiencyMeasuresCommand>
 {
-    public Task Handle(ApplyEfficiencyMeasuresCommand request, CancellationToken cancellationToken) =>
-        Task.Run(() => ApplyEfficiencyMeasures(request.ConnectionString, request.StationId, request.NewEnergyLoss), cancellationToken);
+    private readonly IDb db;
 
-    private static void ApplyEfficiencyMeasures(string connectionString, int stationId, double newEnergyLoss)
+    public ApplyEfficiencyMeasuresHandler(IDb db)
     {
-        using var dbConnection = new NpgsqlConnection(connectionString);
-        dbConnection.Open();
-        dbConnection.Execute("UPDATE station SET energy_loss = @newEnergyLoss WHERE id = @stationId;",
-            new { stationId, newEnergyLoss });
-        Console.WriteLine($"Updated Station {stationId} to have an energy loss of {newEnergyLoss}%.");
+        this.db = db;
+    }
+
+    public Task Handle(ApplyEfficiencyMeasuresCommand request, CancellationToken cancellationToken)
+    {
+        return Task.Run(() =>
+        {
+            db.SetEnergyLoss(request.StationId, request.NewEnergyLoss);
+            Console.WriteLine($"Updated Station {request.StationId} to have an energy loss of {request.NewEnergyLoss}%.");
+        }, cancellationToken);
     }
 }
