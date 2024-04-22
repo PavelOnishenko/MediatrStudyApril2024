@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Library_MediatrStudyApril2024.Queries;
+namespace PowerNetworkWebService.Queries;
 
 public class GetAverageLossHandler(IDb db) : IRequestHandler<GetAverageLossQuery, float>
 {

@@ -1,8 +1,8 @@
-﻿using Library_MediatrStudyApril2024.Entities;
-using Npgsql;
+﻿using Npgsql;
 using Dapper;
+using PowerNetworkWebService.Entities;
 
-namespace Library_MediatrStudyApril2024
+namespace PowerNetworkWebService
 {
     public class LiveDb : IDb
     {
@@ -25,7 +25,7 @@ namespace Library_MediatrStudyApril2024
         public float GetAverageLoss()
         {
             var stations = connection.Query<station>("SELECT * FROM station;").ToArray();
-            return stations.Average(x => x.energy_loss);
+            return stations.Average(x => x.efficiency);
         }
 
         public (IEnumerable<station> stations, IEnumerable<line> lines) SeedTestData()
@@ -36,19 +36,19 @@ namespace Library_MediatrStudyApril2024
             return (new[] { station1, station2 }, lines);
         }
 
-        public void SetEnergyLoss(int stationId, float newEnergyLoss)
+        public void SetEnergyLoss(int stationId, float newEfficiency)
         {
             using var dbConnection = new NpgsqlConnection(connectionString);
             dbConnection.Open();
-            dbConnection.Execute("UPDATE station SET energy_loss = @newEnergyLoss WHERE id = @stationId;",
-                new { stationId, newEnergyLoss });
+            dbConnection.Execute("UPDATE station SET efficiency = @newEfficiency WHERE id = @stationId;",
+                new { stationId, newEfficiency });
         }
 
         private static (station station1, station station2) CreateStations(NpgsqlConnection dbConnection)
         {
             var station1 = new station(0, "Station A", 3);
             var station2 = new station(0, "Station B", 5);
-            var stationInsertSql = "insert into station (name, energy_loss) values (@Name, @energy_loss) returning id;";
+            var stationInsertSql = "insert into station (name, efficiency) values (@Name, @efficiency) returning id;";
             station1 = station1 with { id = dbConnection.QuerySingle<int>(stationInsertSql, station1) };
             station2 = station2 with { id = dbConnection.QuerySingle<int>(stationInsertSql, station2) };
             return (station1, station2);

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library_MediatrStudyApril2024\Library_MediatrStudyApril2024.csproj" />
+    <ProjectReference Include="..\PowerNetworkWebService\PowerNetworkWebService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

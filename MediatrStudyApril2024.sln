@@ -3,16 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console_MediatrStudyApril2024", "MediatrStudyApril2024\Console_MediatrStudyApril2024.csproj", "{166F7B92-CAE3-4930-8ADC-7A79BA426A0B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB73D1D2-0976-4B6B-ACE4-0F6A4F92BDCB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library_MediatrStudyApril2024", "Library_MediatrStudyApril2024\Library_MediatrStudyApril2024.csproj", "{AC273834-41AC-4668-A8A2-7145A585EFA1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests_MediatrStudyApril2024", "Tests_MediatrStudyApril2024\Tests_MediatrStudyApril2024.csproj", "{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests_MediatrStudyApril2024", "Tests_MediatrStudyApril2024\Tests_MediatrStudyApril2024.csproj", "{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerNetworkWebService", "PowerNetworkWebService\PowerNetworkWebService.csproj", "{6D5C2AAB-5CAD-415A-9FB6-8DDDCAF146A8}"
 EndProject
@@ -22,14 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{166F7B92-CAE3-4930-8ADC-7A79BA426A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{166F7B92-CAE3-4930-8ADC-7A79BA426A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{166F7B92-CAE3-4930-8ADC-7A79BA426A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{166F7B92-CAE3-4930-8ADC-7A79BA426A0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC273834-41AC-4668-A8A2-7145A585EFA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC273834-41AC-4668-A8A2-7145A585EFA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC273834-41AC-4668-A8A2-7145A585EFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC273834-41AC-4668-A8A2-7145A585EFA1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}.Release|Any CPU.ActiveCfg = Release|Any CPU

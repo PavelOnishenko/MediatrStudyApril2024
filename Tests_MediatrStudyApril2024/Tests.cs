@@ -1,7 +1,7 @@
-using Library_MediatrStudyApril2024;
-using Library_MediatrStudyApril2024.Commands;
-using Library_MediatrStudyApril2024.Entities;
 using Microsoft.Extensions.DependencyInjection;
+using PowerNetworkWebService;
+using PowerNetworkWebService.Commands;
+using PowerNetworkWebService.Entities;
 
 namespace Tests_MediatrStudyApril2024
 {
@@ -21,7 +21,7 @@ namespace Tests_MediatrStudyApril2024
             Assert.Multiple(() =>
             {
                 Assert.That(stationAfterMeasure.id, Is.EqualTo(1));
-                Assert.That(stationAfterMeasure.energy_loss, Is.EqualTo(4));
+                Assert.That(stationAfterMeasure.efficiency, Is.EqualTo(4));
             });
         }
 

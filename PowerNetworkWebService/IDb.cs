@@ -1,6 +1,6 @@
-﻿using Library_MediatrStudyApril2024.Entities;
+﻿using PowerNetworkWebService.Entities;
 
-namespace Library_MediatrStudyApril2024
+namespace PowerNetworkWebService
 {
     public interface IDb : IDisposable
     {

@@ -1,7 +1,6 @@
 using PowerNetworkWebService;
-using Library_MediatrStudyApril2024;
-using Library_MediatrStudyApril2024.Commands;
 using Microsoft.IdentityModel.Tokens;
+using PowerNetworkWebService.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 RegisterServices(builder, builder.Services);

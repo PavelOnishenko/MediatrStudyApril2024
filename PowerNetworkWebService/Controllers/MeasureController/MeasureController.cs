@@ -1,9 +1,9 @@
-﻿using Library_MediatrStudyApril2024.Commands;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PowerNetworkWebService.Commands;
 
-namespace PowerNetworkWebService;
+namespace PowerNetworkWebService.Controllers.MeasureController;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -15,7 +15,7 @@ public class MeasureController(ISender mediator) : ControllerBase
     [HttpPost("apply-measure")]
     public async Task<IActionResult> ApplyMeasure([FromBody] ApplyMeasureRequestModel model)
     {
-        await mediator.Send(new ApplyEfficiencyMeasuresCommand(model.StationId, model.NewEnergyLoss));
+        await mediator.Send(new ApplyEfficiencyMeasuresCommand(model.StationId, model.NewEfficiency));
         return Ok();
     }
 }

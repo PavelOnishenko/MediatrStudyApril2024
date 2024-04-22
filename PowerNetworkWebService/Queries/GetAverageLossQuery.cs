@@ -1,5 +1,5 @@
 ﻿using MediatR;
 
-namespace Library_MediatrStudyApril2024.Queries;
+namespace PowerNetworkWebService.Queries;
 
 public record GetAverageLossQuery() : IRequest<float>;

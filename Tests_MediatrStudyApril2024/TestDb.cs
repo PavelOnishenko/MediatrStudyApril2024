@@ -1,5 +1,5 @@
-﻿using Library_MediatrStudyApril2024;
-using Library_MediatrStudyApril2024.Entities;
+﻿using PowerNetworkWebService;
+using PowerNetworkWebService.Entities;
 
 namespace Tests_MediatrStudyApril2024
 {
@@ -23,7 +23,7 @@ namespace Tests_MediatrStudyApril2024
 
         public void Dispose() { }
 
-        public float GetAverageLoss() => Stations.Average(x => x.energy_loss);
+        public float GetAverageLoss() => Stations.Average(x => x.efficiency);
 
         public (IEnumerable<station> stations, IEnumerable<line> lines) SeedTestData() => throw new NotImplementedException();
 

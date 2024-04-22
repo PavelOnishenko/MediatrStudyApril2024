@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Library_MediatrStudyApril2024.Commands;
+namespace PowerNetworkWebService.Commands;
 
 internal class ApplyEfficiencyMeasuresHandler(IDb db) : IRequestHandler<ApplyEfficiencyMeasuresCommand>
 {

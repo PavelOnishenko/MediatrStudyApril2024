@@ -1,4 +1,5 @@
 ﻿using MediatR;
-namespace Library_MediatrStudyApril2024.Commands;
+
+namespace PowerNetworkWebService.Commands;
 
 public record ApplyEfficiencyMeasuresCommand(int StationId, float NewEnergyLoss) : IRequest;
