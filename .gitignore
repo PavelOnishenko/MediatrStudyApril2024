@@ -362,4 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MediatrStudyApril2024/appsettings.json
-/Api_MediatrStudyApril2024/tempkey.jwk
+**/tempkey.jwk
