@@ -3,7 +3,7 @@ using PowerNetworkWebService;
 using PowerNetworkWebService.Commands;
 using PowerNetworkWebService.Entities;
 
-namespace Tests_MediatrStudyApril2024
+namespace PowerNetworkTests
 {
     public class Tests
     {

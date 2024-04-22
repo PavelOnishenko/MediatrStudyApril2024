@@ -1,7 +1,7 @@
 ﻿using PowerNetworkWebService;
 using PowerNetworkWebService.Entities;
 
-namespace Tests_MediatrStudyApril2024
+namespace PowerNetworkTests
 {
     internal class TestDb : IDb
     {

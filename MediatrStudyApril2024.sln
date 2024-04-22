@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests_MediatrStudyApril2024", "Tests_MediatrStudyApril2024\Tests_MediatrStudyApril2024.csproj", "{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerNetworkTests", "PowerNetworkTests\PowerNetworkTests.csproj", "{3C803C9C-EBE5-4DE2-97A4-1E54499FA961}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerNetworkWebService", "PowerNetworkWebService\PowerNetworkWebService.csproj", "{6D5C2AAB-5CAD-415A-9FB6-8DDDCAF146A8}"
 EndProject
