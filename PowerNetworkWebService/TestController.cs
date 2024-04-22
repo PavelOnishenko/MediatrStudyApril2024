@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Api_MediatrStudyApril2024;
+namespace PowerNetworkWebService;
 
 [ApiController]
 [Route("test")]  

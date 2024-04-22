@@ -1,3 +1,3 @@
-﻿namespace Api_MediatrStudyApril2024;
+﻿namespace PowerNetworkWebService;
 
 public record ApplyMeasureRequestModel(int StationId, float NewEnergyLoss);

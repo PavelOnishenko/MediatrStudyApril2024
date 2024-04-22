@@ -1,6 +1,6 @@
 ﻿using IdentityServer4.Models;
 
-namespace Api_MediatrStudyApril2024;
+namespace PowerNetworkWebService;
 
 public static class IdentityServerConfig
 {

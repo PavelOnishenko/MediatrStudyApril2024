@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api_MediatrStudyApril2024;
+namespace PowerNetworkWebService;
 
 [ApiController]
 [Route("api/[controller]")]
