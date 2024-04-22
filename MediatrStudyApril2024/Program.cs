@@ -16,7 +16,7 @@ internal partial class Program
     private static IServiceProvider ConfigureServices()
 #pragma warning restore CA1859 // Use concrete types when possible for improved performance
     {
-        IServiceCollection services = new ServiceCollection();
+        var services = new ServiceCollection();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(station).Assembly));
         services.AddTransient<IDb, LiveDb>(provider => new LiveDb(GetConnectionString()));
         return services.BuildServiceProvider();

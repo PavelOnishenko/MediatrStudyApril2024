@@ -1,28 +1,19 @@
 ﻿using IdentityServer4.Models;
 
-namespace Api_MediatrStudyApril2024
+namespace Api_MediatrStudyApril2024;
+
+public static class IdentityServerConfig
 {
-    public static class IdentityServerConfig
-    {
-        public static IEnumerable<ApiScope> ApiScopes =>
-            new List<ApiScope>
+    public static IEnumerable<ApiScope> ApiScopes => [new ApiScope("writeAPI", "Write API")];
+
+    public static IEnumerable<Client> Clients =>
+       [
+            new Client
             {
-                new ApiScope("writeAPI", "Write API")
-            };
+                ClientId = "apiClient", ClientSecrets = { new Secret("superSecretPassword".Sha256()) }, 
+                AllowedGrantTypes = GrantTypes.ClientCredentials,AllowedScopes = { "writeAPI" } 
+            }
+       ];
 
-        public static IEnumerable<Client> Clients =>
-           new List<Client>
-           {
-                new Client
-                {
-                    ClientId = "apiClient",
-                    ClientSecrets = { new Secret("superSecretPassword".Sha256()) },
-                    AllowedGrantTypes = GrantTypes.ClientCredentials, // Suitable for service-to-service communication
-                    AllowedScopes = { "writeAPI" } // This client can request both read and write scopes
-                }
-           };
-
-        public static IEnumerable<IdentityResource> IdentityResources =>
-            new List<IdentityResource> { new IdentityResources.OpenId(), new IdentityResources.Profile() };
-    }
+    public static IEnumerable<IdentityResource> IdentityResources => [new IdentityResources.OpenId(), new IdentityResources.Profile()];
 }
