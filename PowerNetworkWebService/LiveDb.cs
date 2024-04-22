@@ -36,7 +36,7 @@ namespace PowerNetworkWebService
             return (new[] { station1, station2 }, lines);
         }
 
-        public void SetEnergyLoss(int stationId, float newEfficiency)
+        public void SetEfficiency(int stationId, float newEfficiency)
         {
             using var dbConnection = new NpgsqlConnection(connectionString);
             dbConnection.Open();

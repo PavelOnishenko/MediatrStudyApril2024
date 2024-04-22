@@ -8,7 +8,7 @@ namespace PowerNetworkWebService
 
         (IEnumerable<station> stations, IEnumerable<line> lines) SeedTestData();
 
-        void SetEnergyLoss(int stationId,  float newEnergyLoss);
+        void SetEfficiency(int stationId,  float newEfficiency);
 
         float GetAverageLoss();
     }

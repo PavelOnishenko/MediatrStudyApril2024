@@ -27,11 +27,11 @@ namespace PowerNetworkTests
 
         public (IEnumerable<station> stations, IEnumerable<line> lines) SeedTestData() => throw new NotImplementedException();
 
-        public void SetEnergyLoss(int stationId, float newEnergyLoss)
+        public void SetEfficiency(int stationId, float newEfficiency)
         {
             var station = Stations.Single(x => x.id == stationId);
             Stations.Remove(station);
-            Stations.Add(new station(stationId, station.name, newEnergyLoss));
+            Stations.Add(new station(stationId, station.name, newEfficiency));
         }
     }
 }

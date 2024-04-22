@@ -2,4 +2,4 @@
 
 namespace PowerNetworkWebService.Commands;
 
-public record ApplyEfficiencyMeasuresCommand(int StationId, float NewEnergyLoss) : IRequest;
+public record ApplyEfficiencyMeasuresCommand(int StationId, float newEfficiency) : IRequest;

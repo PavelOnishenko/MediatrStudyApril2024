@@ -7,5 +7,5 @@ internal class ApplyEfficiencyMeasuresHandler(IDb db) : IRequestHandler<ApplyEff
     private readonly IDb db = db;
 
     public Task Handle(ApplyEfficiencyMeasuresCommand request, CancellationToken cancellationToken) =>
-        Task.Run(() => db.SetEnergyLoss(request.StationId, request.NewEnergyLoss), cancellationToken);
+        Task.Run(() => db.SetEfficiency(request.StationId, request.newEfficiency), cancellationToken);
 }
