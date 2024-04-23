@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /MediatrStudyApril2024/appsettings.json
 **/tempkey.jwk
+/PowerNetworkWebService/appsettings.Development.json
+/MeasureHistoryWebService/appsettings.Development.json
