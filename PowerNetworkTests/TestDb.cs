@@ -1,19 +1,13 @@
-﻿using PowerNetworkWebService;
+﻿using PowerNetworkWebService.Db;
 using PowerNetworkWebService.Entities;
 
 namespace PowerNetworkTests
 {
     internal class TestDb : IDb
     {
-        private List<station> Stations { get; set; } = [];
+        public List<station> Stations { get; set; } = [];
 
-        private List<line> Lines { get; set; } = [];
-
-        public List<station> GetStations() => [.. Stations];
-
-        public void CreateLine(line newLine) => Lines.Add(newLine);
-
-        public void CreateStation(station newStation) => Stations.Add(newStation);
+        public List<line> Lines { get; set; } = [];
 
         public void ClearTables()
         {
@@ -23,9 +17,7 @@ namespace PowerNetworkTests
 
         public void Dispose() { }
 
-        public float GetAverageLoss() => Stations.Average(x => x.efficiency);
-
-        public (IEnumerable<station> stations, IEnumerable<line> lines) SeedTestData() => throw new NotImplementedException();
+        public float GetAverageEfficiency() => Stations.Average(x => x.efficiency);
 
         public void SetEfficiency(int stationId, float newEfficiency)
         {

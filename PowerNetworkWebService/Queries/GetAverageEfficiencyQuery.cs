@@ -2,4 +2,4 @@
 
 namespace PowerNetworkWebService.Queries;
 
-public record GetAverageLossQuery() : IRequest<float>;
+public record GetAverageEfficiencyQuery() : IRequest<float>;

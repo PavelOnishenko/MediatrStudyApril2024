@@ -1,7 +1,7 @@
-using PowerNetworkWebService;
+using MeasureHistoryWebService;
+using MeasureHistoryWebService.Commands;
+using MeasureHistoryWebService.Db;
 using Microsoft.IdentityModel.Tokens;
-using PowerNetworkWebService.Commands;
-using PowerNetworkWebService.Db;
 
 var builder = WebApplication.CreateBuilder(args);
 RegisterServices(builder, builder.Services);
@@ -10,8 +10,6 @@ ConfigureApp(app);
 using (var db = app.Services.GetRequiredService<IDb>())
 {
     db.ClearTables();
-    var liveDb = db as LiveDb;
-    liveDb?.SeedTestData();
 }
 app.Run();
 
@@ -22,7 +20,7 @@ static void RegisterServices(WebApplicationBuilder builder, IServiceCollection s
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
     services.AddTransient<IDb, LiveDb>(provider => new LiveDb(builder.Configuration.GetConnectionString("PostgreSQLConnection")!));
-    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ApplyEfficiencyMeasuresCommand).Assembly));
+    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(SaveHistoryRecordCommand).Assembly));
     services.AddLogging(loggingBuilder =>
     {
         loggingBuilder.AddConsole();

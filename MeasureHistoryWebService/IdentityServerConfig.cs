@@ -1,6 +1,6 @@
 ﻿using IdentityServer4.Models;
 
-namespace PowerNetworkWebService;
+namespace MeasureHistoryWebService;
 
 public static class IdentityServerConfig
 {

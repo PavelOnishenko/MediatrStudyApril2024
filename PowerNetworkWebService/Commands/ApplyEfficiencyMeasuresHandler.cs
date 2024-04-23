@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using PowerNetworkWebService.Db;
 
 namespace PowerNetworkWebService.Commands;
 
