@@ -10,6 +10,7 @@ public class Tests
     public void SaveHistoryRecord_MainScenario()
     {
         var serviceProvider = GetServiceProvider();
+
         serviceProvider.GetRequiredService<SaveHistoryRecordHandler>()
             .Handle(new SaveHistoryRecordCommand("CoolUuid", new DateTime(2024, 4, 24), 4, 5), CancellationToken.None)
             .GetAwaiter().GetResult();

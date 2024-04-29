@@ -22,7 +22,7 @@ static void RegisterServices(WebApplicationBuilder builder, IServiceCollection s
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
     services.AddTransient<IDb, LiveDb>(provider => new LiveDb(builder.Configuration.GetConnectionString("PostgreSQLConnection")!));
-    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ApplyEfficiencyMeasuresCommand).Assembly));
+    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ApplyEfficiencyMeasureCommand).Assembly));
     services.AddLogging(loggingBuilder =>
     {
         loggingBuilder.AddConsole();

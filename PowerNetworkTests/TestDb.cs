@@ -7,13 +7,7 @@ namespace PowerNetworkTests
     {
         public List<station> Stations { get; set; } = [];
 
-        public List<line> Lines { get; set; } = [];
-
-        public void ClearTables()
-        {
-            Stations.Clear();
-            Lines.Clear();
-        }
+        public void ClearTables() => Stations.Clear();
 
         public void Dispose() { }
 
@@ -23,7 +17,7 @@ namespace PowerNetworkTests
         {
             var station = Stations.Single(x => x.id == stationId);
             Stations.Remove(station);
-            Stations.Add(new station(stationId, station.name, newEfficiency));
+            Stations.Add(new station(stationId, station.uuid, station.name, newEfficiency));
         }
     }
 }

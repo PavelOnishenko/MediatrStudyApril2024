@@ -14,11 +14,7 @@ public class LiveDb : IDb
         connection.Open();
     }
 
-    public void ClearTables()
-    {
-        connection.Execute("DELETE FROM station;");
-        connection.Execute("DELETE FROM line;");
-    }
+    public void ClearTables() => connection.Execute("DELETE FROM station;");
 
     public float GetAverageEfficiency() => connection.Query<station>("SELECT * FROM station;").Average(x => x.efficiency);
 
@@ -34,9 +30,9 @@ public class LiveDb : IDb
 
     private static station[] CreateTestStations(NpgsqlConnection dbConnection)
     {
-        var station1 = new station(0, "Station A", 3);
-        var station2 = new station(0, "Station B", 5);
-        var stationInsertSql = "insert into station (name, efficiency) values (@Name, @efficiency) returning id;";
+        var station1 = new station(0, Guid.NewGuid(), "Station A", 3);
+        var station2 = new station(0, Guid.NewGuid(), "Station B", 5);
+        var stationInsertSql = "insert into station (name, uuid, efficiency) values (@name, @uuid, @efficiency) returning id;";
         station1 = station1 with { id = dbConnection.QuerySingle<int>(stationInsertSql, station1) };
         station2 = station2 with { id = dbConnection.QuerySingle<int>(stationInsertSql, station2) };
         return [station1, station2];

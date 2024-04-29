@@ -3,10 +3,10 @@ using PowerNetworkWebService.Db;
 
 namespace PowerNetworkWebService.Commands;
 
-internal class ApplyEfficiencyMeasuresHandler(IDb db) : IRequestHandler<ApplyEfficiencyMeasuresCommand>
+internal class ApplyEfficiencyMeasureHandler(IDb db) : IRequestHandler<ApplyEfficiencyMeasureCommand>
 {
     private readonly IDb db = db;
 
-    public Task Handle(ApplyEfficiencyMeasuresCommand request, CancellationToken cancellationToken) =>
+    public Task Handle(ApplyEfficiencyMeasureCommand request, CancellationToken cancellationToken) =>
         Task.Run(() => db.SetEfficiency(request.StationId, request.newEfficiency), cancellationToken);
 }

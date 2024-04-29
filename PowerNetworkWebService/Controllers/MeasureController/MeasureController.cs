@@ -15,7 +15,7 @@ public class MeasureController(ISender mediator) : ControllerBase
     [HttpPost("apply-measure")]
     public async Task<IActionResult> ApplyMeasure([FromBody] ApplyMeasureRequestModel model)
     {
-        await mediator.Send(new ApplyEfficiencyMeasuresCommand(model.StationId, model.NewEfficiency));
+        await mediator.Send(new ApplyEfficiencyMeasureCommand(model.StationId, model.NewEfficiency));
         return Ok();
     }
 }
