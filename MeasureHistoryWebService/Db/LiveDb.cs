@@ -15,7 +15,7 @@ public class LiveDb : IDb
     }
 
     public IEnumerable<measure_history> GetHistoryRecordsForDay(DateTime theDay) =>
-        connection.Query<measure_history>("SELECT * FROM measure_history WHERE DATE(application_date) = @theDay;", theDay);
+        connection.Query<measure_history>("SELECT * FROM measure_history WHERE DATE(application_date) = @theDay;", new {theDay});
 
     public void SaveHistoryRecord(SaveHistoryRecordModel newRecord) =>
         connection.Execute(

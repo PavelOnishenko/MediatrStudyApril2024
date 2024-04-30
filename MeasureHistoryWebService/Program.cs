@@ -37,15 +37,15 @@ static void RegisterAuthorization(IServiceCollection services)
     services.AddAuthentication("Bearer")
        .AddJwtBearer("Bearer", options =>
        {
-           options.Authority = "http://localhost:5099";
+           options.Authority = "http://localhost:5294";
            options.RequireHttpsMetadata = false;
            options.TokenValidationParameters = new TokenValidationParameters { ValidateAudience = false };
        });
     services.AddAuthorizationBuilder()
-        .AddPolicy("writeAPI", policy =>
+        .AddPolicy("theAPI", policy =>
         {
             policy.RequireAuthenticatedUser();
-            policy.RequireClaim("scope", "writeAPI");
+            policy.RequireClaim("scope", "theAPI");
         });
 }
 

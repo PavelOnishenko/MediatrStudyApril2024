@@ -4,14 +4,14 @@ namespace PowerNetworkWebService;
 
 public static class IdentityServerConfig
 {
-    public static IEnumerable<ApiScope> ApiScopes => [new ApiScope("writeAPI", "Write API")];
+    public static IEnumerable<ApiScope> ApiScopes => [new ApiScope("theAPI", "My API")];
 
     public static IEnumerable<Client> Clients =>
        [
             new Client
             {
                 ClientId = "apiClient", ClientSecrets = { new Secret("superSecretPassword".Sha256()) }, 
-                AllowedGrantTypes = GrantTypes.ClientCredentials,AllowedScopes = { "writeAPI" } 
+                AllowedGrantTypes = GrantTypes.ClientCredentials,AllowedScopes = { "theAPI" } 
             }
        ];
 

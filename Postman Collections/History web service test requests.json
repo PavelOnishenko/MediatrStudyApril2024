@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "9846edde-616b-4aaa-873e-e065f264df05",
+		"name": "StudyApril2024_History",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25229790"
+	},
+	"item": [
+		{
+			"name": "Get token HTTPS PowerStation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "apiClient",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "superSecretPassword",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "theAPI",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:7007/connect/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7007",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apply measure HTTPS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkVBNDUwOTNBNDhFNUI5MzcxRDY3OEQ3RjQyMjEzRUU1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MTM3ODU4MjYsImV4cCI6MTcxMzc4OTQyNiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDk5IiwiY2xpZW50X2lkIjoiYXBpQ2xpZW50IiwianRpIjoiNzMxQkNBNDk5MjNEMEVGQTk2QTQwMTJFOERBQzNEMUUiLCJpYXQiOjE3MTM3ODU4MjYsInNjb3BlIjpbIndyaXRlQVBJIl19.dyhsytzZACMucsA7kpt499RgqJAT7U-y_GgPAEgMmVjDjaha1iU_dmUlTHWH2n0B2C8HqEuICntY-k1ggMgyxACBEefrPJrtAZJ-dy3kXG1f0t9ZYCvMB0qoVpWrjURL0MStu-tnXjTknqGR7gD9yV4Joyc1rONdcFaLmpr56nj0Jv7m862Ycs6ufow81DZCs86JoPIW3sMkIIDhEcria9q72Hd5dTefDSG5bLzYbjyWgKLF0jPqZ35ma5E1JUReu03g1nvCF0KtoU4joN4q4ewRWz807BpjiDwnNrkkLAFAMmnhftsd5h2Ce9877IFLVcXD71Zl9i_4WrYO60YlQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stationId\": 60,\r\n    \"newEnergyLoss\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5099/api/measure/apply-measure",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5099",
+					"path": [
+						"api",
+						"measure",
+						"apply-measure"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

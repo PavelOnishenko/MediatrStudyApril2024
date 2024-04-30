@@ -44,10 +44,10 @@ static void RegisterAuthorization(IServiceCollection services)
            options.TokenValidationParameters = new TokenValidationParameters { ValidateAudience = false };
        });
     services.AddAuthorizationBuilder()
-        .AddPolicy("writeAPI", policy =>
+        .AddPolicy("theAPI", policy =>
         {
             policy.RequireAuthenticatedUser();
-            policy.RequireClaim("scope", "writeAPI");
+            policy.RequireClaim("scope", "theAPI");
         });
 }
 

@@ -7,7 +7,7 @@ namespace PowerNetworkWebService.Controllers.MeasureController;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize("writeAPI")]
+[Authorize("theAPI")]
 public class MeasureController(ISender mediator) : ControllerBase
 {
     private readonly ISender mediator = mediator;
